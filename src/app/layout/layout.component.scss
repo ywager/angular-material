@@ -1,16 +1,10 @@
-.example-container {
+.sidenav-container {
     position: absolute;
     top: 60px;
     bottom: 0px;
     left: 0;
     right: 0;
-}
-
-.example-sidenav {
-    width: 200px;
-}
-
-.example-header {
-    position: fixed;
-    top: 0;
+    .sidenav {
+        width: 200px;
+    }
 }

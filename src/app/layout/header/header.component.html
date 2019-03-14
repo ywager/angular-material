@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <button mat-button (click)="onToggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span fxFlex="auto"></span>
+  <button mat-button [matMenuTriggerFor]="user">
+    <mat-icon>account_circle</mat-icon>
+    admin
+  </button>
+  <mat-menu #user="matMenu">
+    <button mat-menu-item (click)="logout()">Logout</button>
+  </mat-menu>
+</mat-toolbar>
