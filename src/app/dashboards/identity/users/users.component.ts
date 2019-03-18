@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CreateUserComponent } from './actions/create-user/create-user.component';
+import { EditUserComponent } from './actions/edit-user/edit-user.component';
+import { DeleteUserComponent } from './actions/delete-user/delete-user.component';
+import { ChangePasswordComponent } from './actions/change-password/change-password.component';
 
 export interface PeriodicElement {
   name: string;
@@ -36,7 +41,9 @@ export class UsersComponent implements OnInit {
   selection = new SelectionModel<PeriodicElement>(true, []);
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.dataSource.sort = this.sort;
@@ -62,19 +69,49 @@ export class UsersComponent implements OnInit {
 
   // table actions
   createUser(): void {
-    console.log(this.selection.selected);
+    const dialogRef = this.dialog.open(CreateUserComponent, {
+      width: '480px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
 
   editUser(): void {
-    console.log(this.selection.selected);
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      width: '480px',
+      data: {user: this.selection.selected[0]}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
 
   deleteUser(): void {
-    console.log(this.selection.selected);
+    const dialogRef = this.dialog.open(DeleteUserComponent, {
+      width: '480px',
+      data: {user: this.selection.selected[0]}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(this.selection.selected);
+    });
   }
 
   changePassword(): void {
-    console.log(this.selection.selected);
+    const dialogRef = this.dialog.open(ChangePasswordComponent, {
+      width: '480px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
   }
 
 }

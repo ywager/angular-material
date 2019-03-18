@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>Edit User</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" fxLayout="column">
+    <mat-form-field>
+      <input matInput placeholder="Username" name="username" formControlName="username" required>
+      <mat-error *ngIf="form.controls.username.dirty && form.controls.username.hasError('required')">
+        Username is required.
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button [disabled]="form.invalid" color="primary" [mat-dialog-close]="true"
+    cdkFocusInitial (click)="submit()">
+    Edit
+  </button>
+</mat-dialog-actions>

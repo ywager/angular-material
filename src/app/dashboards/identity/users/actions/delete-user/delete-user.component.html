@@ -1,0 +1,9 @@
+<h1 md-dialog-title>Confirm</h1>
+<div md-dialog-content>Are you sure you want to delete?</div>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true"
+      cdkFocusInitial>
+      Submit
+    </button>
+</mat-dialog-actions>
