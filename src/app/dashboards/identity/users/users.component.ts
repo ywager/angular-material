@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { SelectionModel } from '@angular/cdk/collections';
 
 export interface PeriodicElement {
   name: string;
@@ -30,8 +31,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = ['name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['select', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  selection = new SelectionModel<PeriodicElement>(true, []);
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor() { }
@@ -42,6 +44,37 @@ export class UsersComponent implements OnInit {
     this.dataSource.sort.direction = 'asc';
     this.dataSource.sort.active = 'name';
     this.dataSource.paginator = this.paginator;
+  }
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
+  // table actions
+  createUser(): void {
+    console.log(this.selection.selected);
+  }
+
+  editUser(): void {
+    console.log(this.selection.selected);
+  }
+
+  deleteUser(): void {
+    console.log(this.selection.selected);
+  }
+
+  changePassword(): void {
+    console.log(this.selection.selected);
   }
 
 }
