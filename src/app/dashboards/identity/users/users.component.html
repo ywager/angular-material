@@ -1,4 +1,10 @@
 <div style="margin: 20px;">
+    <app-mat-magic-search
+      [facets_param]="choices"
+      (textSearchEvent)="textSearch($event)"
+      (searchUpdatedEvent)="searchUpdated($event)">
+    </app-mat-magic-search>
+
     <button mat-raised-button color="primary" (click)="createUser()">
         <mat-icon>add</mat-icon>
         <span>Create User</span>

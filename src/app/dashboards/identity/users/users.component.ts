@@ -41,6 +41,24 @@ export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['select', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
+
+  choices = [
+    {
+      name: 'owner_alias',
+      label: 'Images owned by',
+      singleton: true
+    },
+    {
+      name: 'platform',
+      label: 'Platform',
+      options: [
+        {key: 'linux', label: 'Linux'},
+        {key: 'windows', label: 'Windows'}
+      ],
+      singleton: true
+    }
+  ];
+
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(
@@ -118,6 +136,14 @@ export class UsersComponent implements OnInit {
       console.log('The dialog was closed');
       console.log(result);
     });
+  }
+
+  searchUpdated(terms) {
+    console.log(terms);
+  }
+
+  textSearch(customTerm) {
+    console.log(customTerm);
   }
 
 }

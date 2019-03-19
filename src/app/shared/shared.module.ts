@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MessagesModule } from './components/messages/messages.module';
+import { MatMagicSearchModule } from './components/mat-magic-search/mat-magic-search.module';
 
 @NgModule({
   declarations: [],
@@ -44,7 +45,8 @@ import { MessagesModule } from './components/messages/messages.module';
     MatCheckboxModule,
     MatDialogModule,
     MatSnackBarModule,
-    MessagesModule
+    MessagesModule,
+    MatMagicSearchModule
   ],
   exports: [
     FormsModule,
@@ -66,7 +68,8 @@ import { MessagesModule } from './components/messages/messages.module';
     MatCheckboxModule,
     MatDialogModule,
     MatSnackBarModule,
-    MessagesModule
+    MessagesModule,
+    MatMagicSearchModule
   ]
 })
 export class SharedModule { }
