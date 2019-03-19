@@ -7,6 +7,8 @@ import { EditUserComponent } from './actions/edit-user/edit-user.component';
 import { DeleteUserComponent } from './actions/delete-user/delete-user.component';
 import { ChangePasswordComponent } from './actions/change-password/change-password.component';
 
+import { MessagesService } from './../../../shared/components/messages/services/messages.service';
+
 export interface PeriodicElement {
   name: string;
   id: number;
@@ -42,7 +44,8 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private message: MessagesService
   ) { }
 
   ngOnInit() {
@@ -76,6 +79,9 @@ export class UsersComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
+      if (result) {
+        this.message.success('User ' + result.username + ' was successfully created.');
+      }
     });
   }
 
