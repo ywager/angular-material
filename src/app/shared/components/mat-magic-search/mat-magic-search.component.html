@@ -1,14 +1,14 @@
 <div class="magic-search">
   <div class="search-bar">
-    <i class="fa fa-filter go"></i>
-    <div class="search-main-area" (click)="enableTextEntry()">
-      <span class="item-list" *ngIf="currentSearch">
+    <mat-icon class="search-icon">search</mat-icon>
+    <div class="search-main-area" (click)="enableTextEntry()" fxLayoutAlign="start center">
+      <span class="item-list" *ngIf="currentSearch" fxLayoutAlign="center">
         <span *ngFor="let facet of currentSearch; let i = index;" class="ngx-label radius secondary item">
           <span>{{ facet.label[0] }}:
             <b>{{ facet.label[1] }}</b>
           </span>
           <a class="remove" (click)="removeFacet(i)" title="{{ strings.remove }}">
-            <i class="fa fa-times"></i>
+            <mat-icon [inline]="true">close</mat-icon>
           </a>
         </span>
       </span>
@@ -17,7 +17,7 @@
       </span>
       <!-- For bootstrap, the dropdown attribute is moved from input up to div. -->
       <div [ngClass]="{'search-entry': true, 'dropdown': true, 'active': isMenuOpen}">
-        <input class="search-input" type="text" placeholder="{{ strings.prompt }}" autocomplete="off" (keyup)="handleKeyUp($event)"
+        <input matInput class="search-input" type="text" placeholder="{{ strings.prompt }}" autocomplete="off" (keyup)="handleKeyUp($event)"
           (keydown)="handleKeyDown($event)" (keypress)="handleKeyPress($event)" [(ngModel)]="searchInput" appMatMagicSearch="setFocusedEventEmitter"
         />
         <div class="dropdown-content" *ngIf="filteredObj.length > 0">
@@ -48,7 +48,7 @@
       </div>
     </div>
     <a (click)="clearSearch()" *ngIf="currentSearch.length > 0" title="{{ strings.cancel }}">
-      <i class="fa fa-times cancel"></i>
+      <mat-icon class="cancel-icon">cancel</mat-icon>
     </a>
   </div>
 </div>

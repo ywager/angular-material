@@ -100,12 +100,14 @@
     height: auto;
 }
   
-.search-bar i.fa-filter {
-    color: #6a737b;
-    position: absolute;
-    top: 0.75rem;
-    left: 0.65rem;
-    font-size: 18px;
+.search-bar {
+    .search-icon {
+        color: #6a737b;
+        position: absolute;
+        top: 0.75rem;
+        left: 0.65rem;
+        font-size: 18px;
+    }
 }
   
 .search-bar .search-main-area {
@@ -118,7 +120,6 @@
   
 .search-bar .item-list {
     position: relative;
-    margin-top: 9px;
     float: left;
 }
   
@@ -170,15 +171,16 @@
     font-weight: bold;
 }
   
-.search-bar i.cancel {
-    color: #6a737b;
-    position: absolute;
-    top: 0.75rem;
-    right: 0.65rem;
-    font-size: 18px;
-}
-  
-  .search-bar i.cancel:hover {
-    color: darkred;
-    cursor: pointer;
+.search-bar {
+    .cancel-icon {
+        color: #6a737b;
+        position: absolute;
+        top: 0.75rem;
+        right: 0.65rem;
+        font-size: 18px;
+        &:hover {
+            color: darkred;
+            cursor: pointer;
+        }
+    }
 }
