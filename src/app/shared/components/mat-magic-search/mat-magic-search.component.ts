@@ -306,6 +306,7 @@ export class MatMagicSearchComponent implements OnInit, OnChanges, DoCheck {
    * @memberOf NgxMagicSearchComponent
    */
   resetState(): void {
+    // Do not update the url
     this.updateUrl('');
     this.searchInput = '';
     this.filteredObj = this.facetsObj;
@@ -649,6 +650,7 @@ export class MatMagicSearchComponent implements OnInit, OnChanges, DoCheck {
       this.textSearch = undefined;
     } else {
       this.searchUpdatedEvent.emit(this.buildTermsArray());
+      // Do not update the url
       this.updateUrl(query);
       if (this.currentSearch.length > 0) {
         // prune facets as needed from menus
