@@ -119,6 +119,12 @@ export class MatMagicSearchComponent implements OnInit, OnChanges, DoCheck {
         if (value.name === facetParts[0]) {
           if (value.options === undefined) {
             that.currentSearch.push({ 'name': facet, 'label': [value.label, facetParts[1]] });
+            // Delete existing facets
+            if (value.singleton === true) {
+              that.deleteFacetEntirely(facetParts);
+            } else {
+              that.deleteFacetSelection(facetParts);
+            }
             // allow free-form facets to remain
           } else {
             value.options.forEach(function(option, idx_option) {
