@@ -128,7 +128,7 @@ export class MatMagicSearchComponent implements OnInit, OnChanges, DoCheck {
             // allow free-form facets to remain
           } else {
             value.options.forEach(function(option, idx_option) {
-              if (option.key === facetParts[1]) {
+              if (String(option.key) === facetParts[1]) {
                 that.currentSearch.push({ 'name': facet, 'label': [value.label, option.label] });
                 if (value.singleton === true) {
                   that.deleteFacetEntirely(facetParts);
@@ -200,7 +200,7 @@ export class MatMagicSearchComponent implements OnInit, OnChanges, DoCheck {
         }
         for (let i = 0; i < facet.options.length; i++) {
           const option = facet.options[i];
-          if (option.key === facetParts[1]) {
+          if (String(option.key) === facetParts[1]) {
             that.facetsObj[idx].options.splice(that.facetsObj[idx].options.indexOf(option), 1);
           }
         }
@@ -307,7 +307,7 @@ export class MatMagicSearchComponent implements OnInit, OnChanges, DoCheck {
    */
   resetState(): void {
     // Do not update the url
-    this.updateUrl('');
+    // this.updateUrl('');
     this.searchInput = '';
     this.filteredObj = this.facetsObj;
     this.facetSelected = undefined;
@@ -651,7 +651,7 @@ export class MatMagicSearchComponent implements OnInit, OnChanges, DoCheck {
     } else {
       this.searchUpdatedEvent.emit(this.buildTermsArray());
       // Do not update the url
-      this.updateUrl(query);
+      // this.updateUrl(query);
       if (this.currentSearch.length > 0) {
         // prune facets as needed from menus
         const newFacet = this.currentSearch[this.currentSearch.length - 1].name;
